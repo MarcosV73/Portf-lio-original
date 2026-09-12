@@ -1,35 +1,42 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { FiGithub } from 'react-icons/fi'
+import { LuMenu, LuX } from 'react-icons/lu'
 
 const navigation = [
-  { label: 'Início', href: '#inicio' },
-  { label: 'Projetos', href: '#projetos' },
-  { label: 'Sobre', href: '#sobre' },
-  { label: 'Contato', href: '#contato' },
+  { label: 'Início', href: '/#inicio' },
+  { label: 'Projetos', href: '/#projetos' },
+  { label: 'Sobre', href: '/#sobre' },
+  { label: 'Contato', href: '/#contato' },
 ]
 
 const githubUrl = 'https://github.com/MarcosV73'
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   const closeMenu = () => setMenuOpen(false)
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 12)
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <header className={`site-header ${menuOpen ? 'is-open' : ''}`}>
+    <header
+      className={`site-header ${menuOpen ? 'is-open' : ''} ${
+        scrolled ? 'is-scrolled' : ''
+      }`}
+    >
       <div className="header-inner">
-        <a className="brand" href="#inicio" onClick={closeMenu}>
-          <span className="brand-mark">
-            <img
-              src="/marcos-logo.png"
-              alt="Logo de Marcos Vinícius"
-              width="42"
-              height="42"
-            />
-          </span>
-          <span className="brand-copy">
-            <strong>Marcos Vinícius</strong>
-            <span>Software Development</span>
-          </span>
+        <a className="brand" href="/#inicio" onClick={closeMenu}>
+          Marcos Vinícius
         </a>
 
         <nav className="site-nav" aria-label="Navegação principal">
@@ -38,27 +45,31 @@ function Header() {
               {item.label}
             </a>
           ))}
-        </nav>
-
-        <div className="header-actions">
           <a
-            className="button button--compact"
+            className="nav-external"
             href={githubUrl}
             target="_blank"
             rel="noreferrer"
+            onClick={closeMenu}
           >
+            <FiGithub aria-hidden="true" focusable="false" />
             GitHub
           </a>
+        </nav>
+
+        <div className="header-actions">
           <button
             className="nav-toggle"
             type="button"
-            aria-label="Abrir menu"
+            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            {menuOpen ? (
+              <LuX aria-hidden="true" focusable="false" />
+            ) : (
+              <LuMenu aria-hidden="true" focusable="false" />
+            )}
           </button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { LuX } from 'react-icons/lu'
 
 function GalleryMedia({ item, large = false }) {
   if (item.src) {
@@ -76,7 +77,7 @@ function ProjectGallery({ items, projectId, projectTitle }) {
               aria-label="Fechar imagem"
               onClick={() => setSelectedItem(null)}
             >
-              x
+              <LuX aria-hidden="true" focusable="false" />
             </button>
             <div className="lightbox-media">
               <GalleryMedia item={selectedItem} large />

@@ -1,12 +1,7 @@
-const heroTechs = [
-  'React',
-  'JavaScript',
-  'n8n',
-  'APIs REST',
-  'Git',
-  'GitHub',
-  'AI-Assisted Software Development',
-]
+import { FiArrowRight, FiGithub, FiLinkedin } from 'react-icons/fi'
+import TechTag from './TechTag.jsx'
+
+const heroTechs = ['JavaScript', 'n8n', 'APIs REST', 'Make', 'HTML', 'CSS']
 
 const githubUrl = 'https://github.com/MarcosV73'
 const linkedinUrl =
@@ -14,36 +9,44 @@ const linkedinUrl =
 
 function Hero() {
   return (
-    <section className="hero-section" id="inicio" aria-labelledby="hero-title">
+    <section
+      className="hero-section"
+      id="inicio"
+      aria-labelledby="hero-title"
+      data-reveal
+    >
       <div className="section-shell hero-layout">
         <div className="hero-copy">
-          <p className="eyebrow">Portfólio pessoal</p>
-          <h1 id="hero-title">Marcos Vinícius Damasceno Gonçalves</h1>
-          <p className="hero-role">Estagiário de Desenvolvimento de Software</p>
-          <p className="hero-description">
-            Estudante de Sistemas de Informação com experiência prática em
-            desenvolvimento web, automação de processos, APIs e Inteligência
-            Artificial aplicada ao desenvolvimento de software.
+          <p className="eyebrow hero-stagger">Eae, eu sou</p>
+          <h1 className="hero-stagger" id="hero-title">
+            <span>Marcos Vinícius</span>
+          </h1>
+          <p className="hero-role hero-stagger">Desenvolvedor • Automação • IA</p>
+          <p className="hero-description hero-stagger">
+            Estudante de Sistemas de Informação, estagiário em desenvolvimento de
+            software, criando experiências digitais e automações conectadas, futuro
+            Analista de IA.
           </p>
 
-          <div className="tech-strip" aria-label="Tecnologias principais">
+          <div className="tech-strip hero-stagger" aria-label="Tecnologias principais">
             {heroTechs.map((tech) => (
-              <span className="tech-pill" key={tech}>
-                {tech}
-              </span>
+              <TechTag
+                className="tech-pill"
+                key={tech}
+                name={tech}
+                variant="hero"
+              />
             ))}
           </div>
 
-          <div className="hero-actions">
-            <a className="button" href="#projetos">
-              Ver projetos
-            </a>
+          <div className="hero-actions hero-stagger">
             <a
-              className="button button--secondary"
+              className="button"
               href={githubUrl}
               target="_blank"
               rel="noreferrer"
             >
+              <FiGithub aria-hidden="true" focusable="false" />
               GitHub
             </a>
             <a
@@ -52,35 +55,21 @@ function Hero() {
               target="_blank"
               rel="noreferrer"
             >
+              <FiLinkedin aria-hidden="true" focusable="false" />
               LinkedIn
+            </a>
+            <a className="button button--secondary" href="/#projetos">
+              <FiArrowRight aria-hidden="true" focusable="false" />
+              Ver projetos
             </a>
           </div>
         </div>
 
-        <div className="hero-visual" aria-hidden="true">
-          <div className="visual-board">
-            <span className="visual-leaf visual-leaf--one"></span>
-            <span className="visual-leaf visual-leaf--two"></span>
-            <span className="visual-line visual-line--one"></span>
-            <span className="visual-line visual-line--two"></span>
-
-            <div className="workflow-card workflow-card--input">
-              <span>WhatsApp</span>
-              <strong>Webhook</strong>
-            </div>
-            <div className="workflow-card workflow-card--main">
-              <span>n8n</span>
-              <strong>Automação</strong>
-            </div>
-            <div className="workflow-card workflow-card--api">
-              <span>REST</span>
-              <strong>APIs</strong>
-            </div>
-            <div className="workflow-card workflow-card--ai">
-              <span>Contexto</span>
-              <strong>IA</strong>
-            </div>
-          </div>
+        <div className="hero-visual hero-stagger" aria-hidden="true">
+          <figure className="hero-polaroid">
+            <img src="/assets/TED.jpg" alt="" loading="eager" />
+            <figcaption className="hero-polaroid__caption">#grrrmondays</figcaption>
+          </figure>
         </div>
       </div>
     </section>
