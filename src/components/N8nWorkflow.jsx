@@ -1,6 +1,5 @@
 import { useCallback, useMemo, useState } from 'react'
 import {
-  Background,
   Controls,
   Handle,
   MarkerType,
@@ -143,7 +142,6 @@ function WorkflowInner({ workflow }) {
             onNodeMouseEnter={(_, node) => setHoveredNodeId(node.id)}
             onNodeMouseLeave={() => setHoveredNodeId(null)}
           >
-            <Background color="rgba(194, 139, 105, 0.12)" gap={28} size={1.1} />
             <Controls showInteractive={false} position="bottom-left" />
           </ReactFlow>
         </div>

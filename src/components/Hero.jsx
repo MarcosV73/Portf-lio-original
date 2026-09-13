@@ -19,7 +19,12 @@ function Hero() {
         <div className="hero-copy">
           <p className="eyebrow hero-stagger">Eae, eu sou</p>
           <h1 className="hero-stagger" id="hero-title">
-            <span>Marcos Vinícius</span>
+            <span className="name-line" data-text="Marcos">
+              Marcos
+            </span>
+            <span className="name-line" data-text="Vinícius">
+              Vinícius
+            </span>
           </h1>
           <p className="hero-role hero-stagger">Desenvolvedor • Automação • IA</p>
           <p className="hero-description hero-stagger">
@@ -67,7 +72,7 @@ function Hero() {
 
         <div className="hero-visual hero-stagger" aria-hidden="true">
           <figure className="hero-polaroid">
-            <img src="/assets/TED.jpg" alt="" loading="eager" />
+            <img src="/assets/dvd-video-polaroid.jpg" alt="" loading="eager" />
             <figcaption className="hero-polaroid__caption">#grrrmondays</figcaption>
           </figure>
         </div>
