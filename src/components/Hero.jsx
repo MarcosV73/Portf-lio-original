@@ -73,7 +73,7 @@ function Hero() {
         <div className="hero-visual hero-stagger" aria-hidden="true">
           <figure className="hero-polaroid">
             <img src="/assets/dvd-video-polaroid.jpg" alt="" loading="eager" />
-            <figcaption className="hero-polaroid__caption">#grrrmondays</figcaption>
+            <figcaption className="hero-polaroid__caption">S.I</figcaption>
           </figure>
         </div>
       </div>
